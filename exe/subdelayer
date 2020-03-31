@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require 'subdelayer'
+
+if ARGV[0] && ARGV[1]
+  begin
+    delay = ARGV[0].to_f
+
+    puts Subdelayer::Delayer.new(delay: delay, filename: ARGV[1]).perform
+  rescue StandardError => e
+    puts "An error occurred: #{e.message}"
+  end
+else
+  puts "Usage: subdelayer delay file.srt"
+end
